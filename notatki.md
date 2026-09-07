@@ -1,0 +1,2 @@
+# Nowe słówka: 
+* SDK (Software Development Kit) - zestaw narzędzi pomocnych przy tworzeniu aplikacji i oprogramowania. W sklad SDK wchodzi między innymi: biblioteka i pliki kodu, dokumentacja, przykłady kodu. 
