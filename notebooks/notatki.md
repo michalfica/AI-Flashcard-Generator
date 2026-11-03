@@ -1,3 +1,9 @@
+## Przydatne linki z dokumentacją
+
+https://googleapis.github.io/python-genai/#mix-types-in-contents
+
+https://git.sr.ht/~foosoft/anki-connect
+
 ## Nowe słówka: 
 
 - SDK (Software Development Kit) - zestaw narzędzi pomocnych przy tworzeniu aplikacji i oprogramowania. W sklad SDK wchodzi między innymi: biblioteka i pliki kodu, dokumentacja, przykłady kodu. 
@@ -6,17 +12,24 @@
 ## Etapy 
 ### Co dziś mam zrobić? / Na jakim etapie jestem teraz? 
 
-1. Zrozumieć jak działa generowanie kontentu z konfiguracją batch_config.
+<!-- <li><input type="checkbox" disabled> Generowanie kontentu z konfiguracją batch_config. </li> -->
+
+1. [ ] Zrozumieć jak działa generowanie kontentu z konfiguracją batch_config.
 - Dlaczego muszę parsować odpowiedź modelu.
 - W jakim formacie dostaje odpowiedź, czy to jest słownik, czy to jest json?
 - Czym jest json?
 
-2. Zrozumieć jak dział logger. 
+- 1.1 Dodać generowanie przykładowego zdania, w którym uyte jest dane słówko.
+
+2. [ ] Zrozumieć jak dział logger. 
 - Skąd ma tyle róźnych informacji, które zapisuje mi do pliku. 
 - Dlaczego zmiana levelu nie od filtrowuje mi nie potrzebnych informacji?
 - Jak odfiltrowywać i nie zapisywać tylu informacji do pliku z logami. 
 
-3. Poczytać jak mogę zwiększyć czcione, zmienić kolor itp fiszki za pomocą gen anki. 
+3. [ ] Poczytać jak mogę zwiększyć czcione, zmienić kolor itp fiszki za pomocą gen anki. 
+
+- 3.1 Jak dodać kolejne pole do fiszki? (pole z użyciem słowa w zdaniu)
+
  
 ## Problem jakie napotykam podczas pisania projektu :
 ### I. Tłumaczenie listy słów lub listy fraz.
