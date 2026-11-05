@@ -26,9 +26,10 @@ https://git.sr.ht/~foosoft/anki-connect
 - Dlaczego zmiana levelu nie od filtrowuje mi nie potrzebnych informacji?
 - Jak odfiltrowywać i nie zapisywać tylu informacji do pliku z logami. 
 
-3. [ ] Poczytać jak mogę zwiększyć czcione, zmienić kolor itp fiszki za pomocą gen anki. 
+3. [ ] Edycja fiszki. 
 
-- 3.1 Jak dodać kolejne pole do fiszki? (pole z użyciem słowa w zdaniu)
+- 3.1  :white_check_mark: Zmiana czcionki, kolorów. 
+- 3.2  :red_circle: Pole z example_sentence
 
  
 ## Problem jakie napotykam podczas pisania projektu :
@@ -42,4 +43,5 @@ Pytania jak to zrobić, aby działało poprawnie?
     - Gdy podam liste słów jako ciąg napisów odzielonych spacjami, model nie wie czy to fraza czy pojedyncze słowa.
     - Przydatne jest **structured output**
 
+- Git ignore not ignoring (maybe files were already tracked before, git rm --cached test/logging_info.txt)
 ### II. Logger - jak zapisywać i czytać informacje o tym co dzieje się w kodzie. 
