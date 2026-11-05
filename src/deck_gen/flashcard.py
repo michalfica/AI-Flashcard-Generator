@@ -6,16 +6,32 @@ class FlashCard:
                     1607392319,
                     'Simple Model',
                     fields=[
-                        {'name': 'Question'},
-                        {'name': 'Answer'},
+                        {'name': 'Word'},
+                        {'name': 'Translation'},
                     ],
                     templates=[
                         {
-                        'name': 'Card 1',
-                        'qfmt': '{{Question}}',
-                        'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
+                        'name': 'Word -> Translation',
+                        'qfmt': '<div class="word">{{Word}}</div>',
+                        'afmt': '{{FrontSide}}<hr id="answer"><div class="translation">{{Translation}}</div>',
                         },
-                    ])
+                    ],
+                      css="""
+                        .card {
+                            font-family: Arial, sans-serif;
+                            text-align: center;
+                            background-color: #fafafa;
+                        }
+                        .word {
+                            font-size: 50px;
+                            color: #1a5fb4;
+                            font-weight: bold;
+                        }
+                        .translation {
+                            font-size: 40px;
+                            color: #26a269;
+                        }
+                    """)
     
     def __init__(self, word, model=None, translation='', exampleSentence=''):
         self.model = model if model is not None else FlashCard.BASIC_MODEL
