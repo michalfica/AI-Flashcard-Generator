@@ -16,6 +16,11 @@ class TranslationPair(BaseModel):
     word: str
     translation: str
 
+class WordEntry(BaseModel):
+    word: str
+    translation: str
+    example: str
+
 class Translator:
 
     """Translate words or phrases from one language to another using Gemini model"""
@@ -55,6 +60,24 @@ class Translator:
             # max_output_tokens=10,
             # thinking_config=types.ThinkingConfig(thinking_budget=0)
         )
+        self._entries_config = types.GenerateContentConfig(
+            system_instruction=(
+                f"You are a vocabulary assistant for language learners. "
+                f"The user sends a JSON array of {base_language} words or phrases. "
+                f"Return a JSON array with one object per input, in the same order, with:\n"
+                f"- word: the input exactly as given.\n"
+                f"- translation: the most common {target_language} translation. "
+                f"- example: one short, natural {target_language} sentence (about 4 to 7 words) "
+                f"that uses the word in its most typical, representative meaning. "
+                f"The context should make the meaning easy to guess, so prefer concrete, "
+                f"everyday situations over abstract ones. The sentence must be written "
+                f"only in {target_language} and must not contain the translation. "
+            ),
+            temperature=0.3,
+            response_mime_type="application/json",
+            response_schema=list[WordEntry],
+            max_output_tokens=8192,
+        )
 
     def translate_word(self, word : str) -> str:
         response = self._generate(word, self._single_config)
@@ -76,6 +99,31 @@ class Translator:
         if missing:
             raise ValueError(f"Model response is missing translations for: {missing}")
         return translations
+
+    def translate_words_with_examples(self, words: list[str]) -> dict[str, WordEntry]:
+        """Returns a dict mapping each input word to its WordEntry."""
+        response = self._generate(
+            json.dumps(words, ensure_ascii=False), self._entries_config
+        )
+
+        candidate = response.candidates[0]
+        if candidate.finish_reason != types.FinishReason.STOP:
+            raise RuntimeError(f"Model stopped early ({candidate.finish_reason})")
+
+        entries = response.parsed
+        if entries is None:
+            raise ValueError(f"Could not parse model response: {response.text!r}")
+        if len(entries) != len(words):
+            raise ValueError(f"Expected {len(words)} entries, got {len(entries)}")
+
+        return {
+            original: WordEntry(
+                word=original,
+                translation=entry.translation,
+                example=entry.example,
+            )
+            for original, entry in zip(words, entries)
+        }
 
     def _generate(self, contents, config : types.GenerateContentConfig):
         logger.info('_generate evoked')

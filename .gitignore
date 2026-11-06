@@ -5,3 +5,4 @@ test/logging_info.txt
 test/Level1.apkg
 .gitignore
 .DS_Store
+test/Level2.apkg

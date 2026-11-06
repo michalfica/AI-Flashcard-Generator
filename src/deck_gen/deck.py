@@ -13,7 +13,13 @@ class Deck:
     def generateFlashcards(self):
         words_translation = self.translation_agent.translate_list(self.word_list)
         for word, translation in words_translation.items(): 
-            card = FlashCard(word=word, translation=translation)
+            card = FlashCard(word=word, model=FlashCard.BASIC_MODEL, translation=translation)
+            self.deck.add_note(card.convertToGenankiNote())
+
+    def generateFlashcards_with_examples(self):
+        words_entries = self.translation_agent.translate_words_with_examples(self.word_list)
+        for word, entry in words_entries.items():
+            card = FlashCard(word=word, model=FlashCard.EXAMPLE_SENTENCE_MODEL, translation=entry.translation, exampleSentence=entry.example)
             self.deck.add_note(card.convertToGenankiNote())
     
     def saveDeckToFile(self, fileName):
