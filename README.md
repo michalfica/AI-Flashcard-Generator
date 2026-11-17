@@ -38,6 +38,6 @@ data/           # generated decks (not committed)
 
 ## Planned features
 
-- [ ] Input from a photo of a handwritten word list (OCR)
+- [ ] Input from a photo of a handwritten word list
 - [ ] Audio pronunciation
 - [ ] Images on cards
