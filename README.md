@@ -22,8 +22,8 @@ The detailed instruction on how to use files included in project can be found in
 
 <table>
   <tr>
-    <td><img src="data/pics/papiez.png" width="450" alt="Flashcard for rusałka"></td>
     <td><img src="data/pics/rusalka.png" width="450" alt="Flashcard for papież"></td>
+    <td><img src="data/pics/papiez.png" width="450" alt="Flashcard for rusałka"></td>
   </tr>
 </table>
 
